@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Law of Averages Counter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+  <main class="app">
+    <header class="app__header">
+      <h1>Law of Averages</h1>
+      <p>Track your Scores, Pitches, and Booked results in one place.</p>
+    </header>
+
+    <nav class="tab-bar" role="tablist" aria-label="Tracker views">
+      <button class="tab is-active" type="button" id="tab-tracker" role="tab" aria-selected="true" data-tab="tracker" aria-controls="panel-tracker">Tracker</button>
+      <button class="tab" type="button" id="tab-planner" role="tab" aria-selected="false" data-tab="planner" aria-controls="panel-planner">Planner</button>
+    </nav>
+
+    <section class="tab-panel is-active" id="panel-tracker" data-panel="tracker" role="tabpanel" aria-labelledby="tab-tracker">
+      <div class="panel-stack">
+        <section class="counter-grid" aria-label="Activity counters">
+          <article class="counter counter--scores" data-counter="scores">
+            <div class="counter__head">
+              <h2>Scores</h2>
+              <div
+                class="counter__display editable"
+                aria-live="polite"
+                data-editable="counter:scores"
+                data-editable-label="Total scores"
+                role="button"
+                tabindex="0"
+                aria-label="Edit total scores"
+              >0</div>
+            </div>
+            <div class="counter__breakdown" aria-label="Score breakdown">
+              <div class="breakdown-item" data-score="qualified">
+                <span>Qualified</span>
+                <span
+                  class="breakdown-value breakdown-value--qualified editable"
+                  data-editable="breakdown:qualified"
+                  data-editable-label="Qualified count"
+                  role="button"
+                  tabindex="0"
+                  aria-label="Edit qualified count"
+                >0</span>
+              </div>
+              <div class="breakdown-item" data-score="nq">
+                <span>NQ</span>
+   
