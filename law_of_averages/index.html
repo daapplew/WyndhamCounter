@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Law of Averages Counter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+  <main class="app">
+    <header class="app__header">
+      <h1>Law of Averages</h1>
+      <p>Track your Scores, Pitches, and Booked results in one place.</p>
+    </header>
+
+    <section class="counter-grid" aria-label="Activity counters">
+      <article class="counter counter--scores" data-counter="scores">
+        <div class="counter__head">
+          <h2>Scores</h2>
+          <div class="counter__display" aria-live="polite">0</div>
+        </div>
+        <div class="counter__breakdown" aria-label="Score breakdown">
+          <div class="breakdown-item" data-score="qualified">
+            <span>Qualified</span>
+            <span class="breakdown-value breakdown-value--qualified">0</span>
+          </div>
+          <div class="breakdown-item" data-score="nq">
+            <span>NQ</span>
+            <span class="breakdown-value breakdown-value--nq">0</span>
+          </div>
+        </div>
+        <div class="counter__controls">
+          <button type="button" class="counter__btn counter__btn--minus" aria-label="Decrease scores" data-action="decrement">−</button>
+          <button type="button" class="counter__btn counter__btn--plus" aria-label="Increase scores" data-action="increment">+</button>
+        </div>
+      </article>
+
+      <article class="counter" data-counter="pitches">
+        <h2>Pitches</h2>
+        <div class="counter__display" aria-live="polite">0</div>
+        <div class="counter__controls">
+          <button type="button" class="counter__btn counter__btn--minus" aria-label="Decrease pitches" data-action="decrement">−</button>
+          <button type="button" class="counter__btn counter__btn--plus" aria-label="Increase pitches" data-action="increment">+</button>
+        </div>
+      </article>
+
+      <article class="counter" data-counter="booked">
+        <h2>Booked</h2>
+        <div class="counter__display" aria-live="polite">0</div>
+        <div class="counter__controls">
+          <button type="button" class="counter__btn counter__btn--minus" aria-label="Decrease booked" data-action="decrement">−</button>
+          <button type="button" class="counter__btn counter__btn--plus" aria-label="Increase booked" data-action="increment">+</button>
+        </div>
+      </article>
+    </section>
+
+    <footer class="app__footer">
+      <div class="footer-metrics">
+        <div class="metric-card metric-card--ratio" aria-live="polite">
+          <span class="metric-card__title">Closing ratio</span>
+          <span class="metric-card__value" id="ratioValue">0%</span>
+        </div>
+        <div class="metric-card metric-card--revenue" aria-live="polite">
+          <span class="metric-card__title">Money $$</span>
+          <div class="hurdle-selector" role="group" aria-label="Select hurdle">
+            <button type="button" class="hurdle-btn" data-hurdle="1">1</button>
+            <button type="button" class="hurdle-btn is-active" data-hurdle="2">2</button>
+            <button type="button" class="hurdle-btn" data-hurdle="3">3</button>
+            <button type="button" class="hurdle-btn" data-hurdle="4">4</button>
+            <button type="button" class="hurdle-btn" data-hurdle="5">5</button>
+          </div>
+          <span class="metric-card__value metric-card__value--revenue" id="revenueValue">$0</span>
+          <small class="metric-card__note">Based on hurdle <span id="hurdleLabel">2</span> and avg gift cost <span id="giftCostLabel">$75</span>.</small>
+        </div>
+      </div>
+      <button type="button" class="reset-btn" id="resetBtn">Reset Day</button>
+    </footer>
+  </main>
+
+  <dialog id="scorePrompt" class="prompt">
+    <form method="dialog" class="prompt__content">
+      <p class="prompt__question">Was the score qualified?</p>
+      <div class="prompt__actions">
+        <button value="qualified" class="prompt__btn prompt__btn--qualified">Qualified</button>
+        <button value="nq" class="prompt__btn prompt__btn--nq">NQ</button>
+        <button value="cancel" class="prompt__btn prompt__btn--cancel">Cancel</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="hurdlePrompt" class="prompt">
+    <form method="dialog" class="prompt__content prompt__content--input">
+      <p class="prompt__question">Set average gift cost</p>
+      <label class="prompt__label" for="avgGiftInput">Average gift cost</label>
+      <input id="avgGiftInput" class="prompt__field" type="number" min="0" step="0.01" inputmode="decimal" required />
+      <div class="prompt__actions prompt__actions--split">
+        <button value="cancel" class="prompt__btn prompt__btn--cancel" type="submit">Cancel</button>
+        <button value="save" class="prompt__btn prompt__btn--qualified" type="submit">Save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="./index.js" defer></script>
+</body>
+</html>
